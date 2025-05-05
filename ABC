@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<head> 
+  <title>Student Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      background-color: #f0f2f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h2, h3 {
+      text-align: center;
+    }
+
+    form {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 50px;
+      width: 500px; 
+    }
+
+    input, select, button {
+      width: 100%;
+      margin-bottom: 30px;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #0f024a;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #cfbbfe;
+    }
+
+    table {
+      width: 80%;
+      max-width: 800px;
+      border-collapse: collapse;
+      background-color: rgb(172, 179, 226);
+    }
+
+    th, td {
+      border: 1px solid #002853;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #ffffff;
+    }
+
+  </style>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <h2>Student Registration Form</h2>
+  <form id="registrationForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="text" id="roll" placeholder="Roll Number" required>
+    <select id="course" required>
+      <option value="">Select Course</option>
+      <option value="BSc">BSc</option>
+      <option value="BCA">BCA</option>
+      <option value="BBA">BBA</option>
+      <option value="B.Tech">B.Tech</option>
+    </select>
+    <button type="submit">Register</button>
+  </form>
+
+  <h3>Registered Students</h3>
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Roll Number</th>
+        <th>Course</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Student rows will appear here -->
+    </tbody>
+  </table>
+
+  <script>
+    $(document).ready(function () {
+      $('#registrationForm').on('submit', function (e) {
+        e.preventDefault();
+
+        const name = $('#name').val();
+        const email = $('#email').val();
+        const roll = $('#roll').val();
+        const course = $('#course').val();
+
+        const newRow = `
+          <tr>
+            <td>${name}</td>
+            <td>${email}</td>
+            <td>${roll}</td>
+            <td>${course}</td>
+          </tr>
+        `;
+
+        $('#studentTable tbody').append(newRow);
+        this.reset();
+      });
+    });
+  </script>
+
+</body>
+</html>
+
